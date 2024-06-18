@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+    <style>
+        .body{
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        .p,h3,ul{
+            margin: 0;
+            padding: 0;
+        } 
+        .li{
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav{
+            background: rgb(247, 135, 243);
+            color:black;
+        }
+    </style>
+</head>
+<body style="background: #e1dfdf;margin: 20px auto;">
+    <div id="app">
+        <div v-if="showbooks">
+            <!-- <p>{{title}} - {{author}} - {{age}}</p> -->
+            <!-- <button v-on:click="age++">Increase Age</button>
+            <button v-on:click="age--">Decrease Age</button>
+            <button v-on:click="changeTitle('Oath Changer')">Change Title</button> -->
+            <ul>
+                <li v-for="book in books" style="list-style-type: none;
+                display:flex;background: #fff;margin: 20px auto;padding: 10px 20px;
+                border-radius: 10px;align-items: center;justify-content: space-between;" 
+                :class="{fav:book.isFav}" v-on:click="toggleBook(book)">
+                    <img :src="book.img" :alt="book.title" style="width: 100px; height: 70px;"/>
+                    <h3>{{book.title}}</h3>
+                    <p>{{book.author}}</p>
+                </li>
+            </ul>
+        </div>
+        
+        <button v-if="showbooks" v-on:click="toggleShowBooks">Hide Books</button>
+        <button v-else="" v-on:click="toggleShowBooks">Show books</button>
+<br/>
+        <!-- <div class="box" v-on:mouseover="handleEvent($event,5)">Mouse Over</div>
+        <div class="box" v-on:mouseleave="handleEvent">Mouse Leave</div>
+        <div class="box" v-on:dblclick="handleEvent">Double Click</div>
+        <div class="box" v-on:mousemove="handlemousemove">offset - {{x}} {{y}}</div> -->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
